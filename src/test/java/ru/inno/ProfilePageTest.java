@@ -47,6 +47,7 @@ public class ProfilePageTest {
     public static void SetUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browser = Browsers.CHROME;
+        LoginPage.openLoginPage();
     }
 
     @Attachment(type = "image/png")
@@ -70,7 +71,6 @@ public class ProfilePageTest {
     @Description("По умолчанию таблица книг нового пользователя пустая")
     @Severity(SeverityLevel.MINOR)
     public void getEmptyTableTest() {
-        new LoginPage();
         ProfilePage profilePage = LoginPage.login(defaultUser);
         checkEmptyTable(profilePage);
     }
@@ -81,7 +81,6 @@ public class ProfilePageTest {
     @Description("Выбранные в магазине книги отображаются в профле")
     @Severity(SeverityLevel.CRITICAL)
     public void getSixBooksTest() {
-        new LoginPage();
         ProfilePage profilePage = LoginPage.login(userWithSixBooks);
         profilePage.setMaxPageSize();
         checkTableSize(profilePage, 6);
@@ -94,7 +93,6 @@ public class ProfilePageTest {
     @Severity(SeverityLevel.NORMAL)
     public void deleteAllBooksTest() {
         BooksHelper.addBooksToUser(userWithTwoBooks, CommonCollectionOfIsbns.TWO_BOOKS);
-        new LoginPage();
         ProfilePage profilePage = LoginPage.login(userWithTwoBooks);
         checkTableSize(profilePage, 2);
         profilePage.deleteAllBooks();

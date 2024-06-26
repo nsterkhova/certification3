@@ -20,7 +20,7 @@ public class LoginPage {
     private static final SelenideElement passwordField = $(By.cssSelector("#password"));
     private static final SelenideElement loginButton = $(By.cssSelector("#login"));
 
-    public LoginPage() {
+    public static void openLoginPage() {
         Configuration.pageLoadTimeout = 60000;
         step("Открываем страницу логина", () -> {
             open(loginPageUrl);
