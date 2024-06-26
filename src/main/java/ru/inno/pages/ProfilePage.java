@@ -15,10 +15,6 @@ public class ProfilePage {
     private static final SelenideElement deleteAllBooksButton = $(byText("Delete All Books"));
     private static final SelenideElement logOutButton = $(byText("Log out"));
 
-    //private static final String emptyTableContent = $(By.cssSelector(".rt-noData")).getText();
-
-    //private static final ElementsCollection Books = $$(By.cssSelector("div.rt-td img"));
-
     public ProfilePage() {
     }
 
